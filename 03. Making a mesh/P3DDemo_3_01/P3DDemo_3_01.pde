@@ -22,11 +22,13 @@ void draw() {
  
   // Draw Mesh
   for (int y = 0; y < yCount; y++) {
-    beginShape(QUAD_STRIP);
     for (int x = 0; x <= xCount; x++) {
+      beginShape();
       vertex(x, y, 0);
       vertex(x, y+1, 0);
+      vertex(x+1, y+1, 0);
+      vertex(x+1, y, 0);
+      endShape();
     }
-    endShape();
   }
 }

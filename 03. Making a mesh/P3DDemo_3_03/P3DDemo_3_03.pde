@@ -17,14 +17,22 @@ void draw() {
  
   // draw mesh
   for (int y = 0; y <= yCount; y++) { 
-    beginShape(QUAD_STRIP);
     for (int x = 0; x <= xCount; x++) {
+      beginShape();
+      
       float z = sin(sqrt(x*x+y*y));
       vertex(x, y, z);
- 
+      
       z = sin(sqrt(x*x+(y+1)*(y+1)));
       vertex(x, y+1, z);
+      
+      z = sin(sqrt((x+1)*(x+1)+(y+1)*(y+1)));
+      vertex(x+1, y+1, z);
+      
+      z = sin(sqrt((x+1)*(x+1)+y*y));
+      vertex(x+1, y, z); 
+      
+      endShape(CLOSE);
     }
-    endShape();
   }
 }

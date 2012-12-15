@@ -25,17 +25,19 @@ void draw() {
   
   // Draw mesh
   for (int iY = 0; iY < yCount; iY++) {
-    beginShape(QUAD_STRIP);
     for (int iX = 0; iX <= xCount; iX++) {
  
       float x = iX - offsetX;
       float y = iY - offsetY;
-      float z = sin(x);
- 
-      vertex(x, y, z);
-      vertex(x, y+1, z);
+      float z1 = sin(x);
+      float z2 = sin(x+1);
+      beginShape();
+      vertex(x, y, z1);
+      vertex(x, y+1, z1);
+      vertex(x+1, y+1, z2);
+      vertex(x+1, y, z2);
+      endShape(CLOSE);
     }
-    endShape();
   }
   
 }

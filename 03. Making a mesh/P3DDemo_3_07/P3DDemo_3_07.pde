@@ -8,6 +8,8 @@ float offsetY = yCount*0.5;
  
 void setup() {
   size(800, 800, P3D);
+  noStroke();
+  colorMode(HSB);
 }
  
  
@@ -22,32 +24,26 @@ void draw() {
   rotateY( frameCount*0.01 );
  
   scale(20);
+  
+  //randomSeed(123);
  
   // draw mesh
   for (int iY = 0; iY < yCount; iY++) {
-    
+    beginShape(QUAD_STRIP);
     for (int iX = 0; iX <= xCount; iX++) {
       
-      beginShape();
+      float c = random(0, 50);
+      fill(c, 255, 255);
       
       float x = iX - offsetX;
       float y = iY - offsetY;
-      
-      float wave = frameCount*.1;
-      
-      float z = sin(sqrt(x*x+y*y)-wave);
+      float r = sin(radians( random(frameCount) ));
+      float z = sin(sqrt(x*x+y*y)) + r;
       vertex(x, y, z);
-      
-      z = sin(sqrt(x*x+(y+1)*(y+1))-wave);
+ 
+      z = sin(sqrt(x*x+(y+1)*(y+1))) + r;
       vertex(x, y+1, z);
-      
-      z = sin(sqrt((x+1)*(x+1)+(y+1)*(y+1))-wave);
-      vertex(x+1, y+1, z);
-      
-      z = sin(sqrt((x+1)*(x+1)+y*y)-wave);
-      vertex(x+1, y, z); 
-      
-      endShape(CLOSE);
     }
+    endShape();
   }
 }

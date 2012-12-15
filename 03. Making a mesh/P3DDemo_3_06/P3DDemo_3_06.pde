@@ -8,8 +8,6 @@ float offsetY = yCount*0.5;
  
 void setup() {
   size(800, 800, P3D);
-  noStroke();
-  colorMode(HSB);
 }
  
  
@@ -25,25 +23,28 @@ void draw() {
  
   scale(20);
   
-  //randomSeed(123);
+  randomSeed(123);
  
   // draw mesh
   for (int iY = 0; iY < yCount; iY++) {
-    beginShape(QUAD_STRIP);
     for (int iX = 0; iX <= xCount; iX++) {
-      
-      float c = random(0, 50);
-      fill(c, 255, 255);
+      pushMatrix();
+      beginShape();
       
       float x = iX - offsetX;
       float y = iY - offsetY;
-      float r = sin(radians( random(frameCount) ));
-      float z = sin(sqrt(x*x+y*y)) + r;
-      vertex(x, y, z);
- 
-      z = sin(sqrt(x*x+(y+1)*(y+1))) + r;
-      vertex(x, y+1, z);
+      
+      float z1 = sin(sqrt(x*x+y*y)-20*sin(radians(frameCount))); 
+      float z2 = sin(sqrt(x*x+(y+1)*(y+1))-20*sin(radians(frameCount)));
+      
+      translate(0,0,sin(sqrt(x*x+y*y)) + random(map(mouseX, 0, width, 0, 10)));
+      
+      vertex(x, y, z1);
+      vertex(x, y+1, z2);
+      vertex(x+1, y+1, z2);
+      vertex(x+1, y, z1);
+      endShape(CLOSE);
+      popMatrix();
     }
-    endShape();
   }
 }
