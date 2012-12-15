@@ -5,7 +5,7 @@ int yCount = 4;
  
 void setup() {
   size(400,400,P3D);
- 
+  frameRate(30);
   fill(255); 
 }
  
@@ -15,8 +15,8 @@ void draw() {
  
   translate(width*0.5,height*0.5);
   
-  rotateX( frameCount*0.01 );
-  rotateY( frameCount*0.01 );
+  rotateX( frameCount*0.05 );
+  rotateY( frameCount*0.05 );
  
   scale(40);
  

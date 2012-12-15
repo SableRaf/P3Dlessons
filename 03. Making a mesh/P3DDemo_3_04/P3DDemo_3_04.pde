@@ -8,6 +8,7 @@ float offsetY = yCount*0.5;
  
 void setup() {
   size(800, 800, P3D);
+  frameRate(30);
 }
  
  
@@ -18,8 +19,8 @@ void draw() {
   
   translate(width*0.5,height*0.5);
   
-  rotateX( frameCount*0.01 );
-  rotateY( frameCount*0.01 );
+  rotateX( frameCount*0.02 );
+  rotateY( frameCount*0.02 );
  
   scale(20);
  

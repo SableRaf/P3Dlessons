@@ -8,6 +8,7 @@ float offsetY = yCount*0.5;
  
 void setup() {
   size(800, 800, P3D);
+  frameRate(30);
 }
  
  
