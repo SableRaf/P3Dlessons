@@ -37,7 +37,7 @@ void draw() {
       float z1 = sin(sqrt(x*x+y*y)-20*sin(radians(frameCount))); 
       float z2 = sin(sqrt(x*x+(y+1)*(y+1))-20*sin(radians(frameCount)));
       
-      translate(0,0,sin(sqrt(x*x+y*y)) + random(map(mouseX, 0, width, 0, 10)));
+      translate(0,0,sin(sqrt(x*x+y*y)) + random(map(mouseX, 0, width, -10, 10)));
       
       vertex(x, y, z1);
       vertex(x, y+1, z2);
